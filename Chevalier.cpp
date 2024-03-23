@@ -1,30 +1,31 @@
 #include "Chevalier.h"
+#include <iostream>
 
-Chevalier::Chevalier() :Entity(20, 50, 5, 3)
-{
-	m_Class = Class::CHEVALIER;
-
+Chevalier::Chevalier() : Entity(20, 50, new Weapon(5), new ChargeCapacity()) {
+    mClass = Class::CHEVALIER;
+    mChargeAbility = static_cast<ChargeCapacity*>(mCapacity); // Convertit la capacité générale en capacité spécifique
 }
 
-std::string Chevalier::getClassName() const
-{
-	return "Chevalier";
+Chevalier::~Chevalier() {
+    delete mChargeAbility;
 }
 
-void Chevalier::useSpecialAbility() {
-	if (m_abilityChargeTurns == 0) {
-		damage *= 2;
-	}
-	m_abilityChargeTurns = 3;
-
+std::string Chevalier::getClassName() const {
+    return "Chevalier";
 }
 
-void Chevalier::resetSpecialAbility() {
-	if (m_abilityChargeTurns > 0)
-	{
-		m_abilityChargeTurns--;
-	}
-	if (m_abilityChargeTurns == 0) {
-		damage /= 2;
-	}
+void Chevalier::useSpecialAbility(Entity* target) {
+    if (mChargeAbility->useAbility()) {
+        mWeapon->setDamage(mWeapon->getDamage() * 2);
+        std::cout << "CAPACITE SPECIALE reussi " << std::endl;
+    }
+    else {
+        std::cout << "CAPACITE SPECIALE echoue " << std::endl;
+    }
+}
+
+void Chevalier::resetSpecialAbility(Entity* target) {
+    if (mChargeAbility->resetAbility()) {
+        mWeapon->setDamage(mWeapon->getDamage() / 2);
+    }
 }

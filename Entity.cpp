@@ -2,76 +2,65 @@
 #include <iostream>
 
 
-Entity::Entity(int health, int def, int damage, int abilityChargeTurns)
-{
-	m_health = health;
-	m_defense = def;
-	m_damage = damage;
-	m_abilityChargeTurns = abilityChargeTurns;
+Entity::Entity(int health, int def, Weapon* weapon, Capacity* capacity)
+	: mHealth(health), mDefense(def), mWeapon(weapon), mCapacity(capacity), mClass(Class::NONE), canAttack(true) {}
+
+
+Entity::~Entity() {
+	delete mWeapon;
+	delete mCapacity;
 }
 
-int Entity::getHealth() const
-{
-	return m_health;
-}
-int Entity::getDefense() const
-{
-	return m_defense;
-}
-int Entity::getDamage() const
-{
-	return m_damage;
+int Entity::getHealth() const {
+	return mHealth;
 }
 
-Entity::Class Entity::getClass() const
-{
-	return Class();
+int Entity::getDefense() const {
+	return mDefense;
 }
 
-void Entity::attack()
-{
+int Entity::getDamage() const {
+	return mWeapon->getDamage();
 }
 
-void Entity::takeDamage(int damage)
-{
-	if (m_defense > 0) {
-		if (m_defense >= damage) {
-			m_defense -= damage;
+bool Entity::getCanAttack() const {
+	return canAttack;
+}
+
+void Entity::setCanAttack(bool value) {
+	canAttack = value;
+}
+
+bool Entity::attack(Entity* target) {
+	if (target && canAttack) {
+		target->takeDamage(getDamage());
+		return true;
+	}
+	return false;
+}
+
+void Entity::takeDamage(int damage) {
+	if (mDefense > 0) {
+		if (mDefense >= damage) {
+			mDefense -= damage;
 		}
 		else {
-			m_health -= (damage - m_defense);
-			m_defense = 0;
+			mHealth -= (damage - mDefense);
+			mDefense = 0;
 		}
 	}
 	else {
-		m_health -= damage;
+		mHealth -= damage;
 	}
 }
 
-bool Entity::isAlive() const
-{
-	if (m_health <= 0)
-	{
-		return false;
-	}
-	return true;
-}
-
-void Entity::showInfo() const
-{
-	std::cout << "[Class: " << getClassName() << "]\n";
-	std::cout << "[Health: " << getHealth() << "]\n";
-	std::cout << "[Armor: " << getDefense() << "]\n";
+void Entity::showInfo() const {
+	std::cout << "[Class: " << getClassName() << "] ";
+	std::cout << "[Health: " << getHealth() << "] ";
+	std::cout << "[Armor: " << getDefense() << "] ";
 	std::cout << "[Damage: " << getDamage() << "]\n";
 }
 
-std::string Entity::getClassName(Entity::Class type)
-{
-	switch (type)
-	{
-	case Class::CHEVALIER:
-		return "Chevalier";
-	case Class::ORC:
-		return "Orc";
-	}
+void Entity::decreaseChargeTurns() {
+	mCapacity->decreaseChargeTurns();
 }

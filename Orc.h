@@ -1,14 +1,23 @@
 #pragma once
 #include "Entity.h"
+#include "StunCapacity.h"
 #include <string>
 
-class Orc:public Entity
-{
+class Orc : public Entity {
 public:
+    // Constructeur
     Orc();
+
+    // Destructeur
+    ~Orc() override;
+
+    // Méthode pour obtenir le nom de la classe
     std::string getClassName() const final;
 
-    void useSpecialAbility() override;
-    void resetSpecialAbility() override;
-};
+    // Méthodes pour utiliser et réinitialiser la capacité spéciale
+    void useSpecialAbility(Entity* target) override;
+    void resetSpecialAbility(Entity* target) override;
 
+private:
+    StunCapacity* mStunAbility; // Capacité spéciale de l'Orc
+};

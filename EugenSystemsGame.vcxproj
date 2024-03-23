@@ -148,19 +148,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Capacity.cpp" />
+    <ClCompile Include="ChargeCapacity.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Orc.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EugenSystemsGame.cpp" />
     <ClCompile Include="Chevalier.cpp" />
+    <ClCompile Include="StunCapacity.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Capacity.h" />
+    <ClInclude Include="ChargeCapacity.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Orc.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Chevalier.h" />
+    <ClInclude Include="StunCapacity.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
