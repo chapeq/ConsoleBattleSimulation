@@ -1,15 +1,15 @@
-#include "Orc.h"
 #include  <iostream>
-
+#include "Orc.h"
 
 Orc::Orc() : Entity(60, 0, new Weapon(8), new StunCapacity()) {
 	mClass = Class::ORC;
 	mStunAbility = static_cast<StunCapacity*>(mCapacity); // Convertit la capacité générale en capacité spécifique
 }
 
-Orc::~Orc() {
-	delete mStunAbility;
+Orc::~Orc()
+{
 }
+
 
 std::string Orc::getClassName() const {
 	return "Orc";

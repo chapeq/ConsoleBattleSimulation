@@ -1,14 +1,15 @@
-#include "Chevalier.h"
 #include <iostream>
+#include "Chevalier.h"
 
 Chevalier::Chevalier() : Entity(20, 50, new Weapon(5), new ChargeCapacity()) {
     mClass = Class::CHEVALIER;
     mChargeAbility = static_cast<ChargeCapacity*>(mCapacity); // Convertit la capacité générale en capacité spécifique
 }
 
-Chevalier::~Chevalier() {
-    delete mChargeAbility;
+Chevalier::~Chevalier()
+{
 }
+
 
 std::string Chevalier::getClassName() const {
     return "Chevalier";

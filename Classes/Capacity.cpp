@@ -1,6 +1,6 @@
-#include "Capacity.h"
 #include <cstdlib>
 #include <iostream>
+#include "Capacity.h"
 
 Capacity::Capacity(int successRate, int chargeTurns)
     : mSuccessRate(successRate), mChargeTurns(0), mInitChargeTurns(chargeTurns), hasBeenUsed(false) {}

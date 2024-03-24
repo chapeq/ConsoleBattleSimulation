@@ -1,0 +1,28 @@
+            **** BATTLE ARENA *****
+
+ --- Objectif ---
+
+Le but du jeu est de vaincre l'adversaire en reduisant ses points de vie zero.
+
+Deux joueurs s'affrontent dans l'arene de combat, ils peuvent selectionner leur personnage parmi les classes disponibles.
+
+ --- Deroulement du Jeu ---
+
+Le jeu se deroule tour par tour.
+Chaque tour, le joueur peut choisir entre plusieurs actions :
+
+1. Utiliser la capacite speciale : Le joueur utilise la capacite speciale de sa classe avec une chance de reussite et des effets uniques.
+2. Defendre : Le joueur augmente sa defense, reduisant les degats recus lors de l'attaque adverse.
+
+Chaque joueur attaque ensuite son adversaire, lui infligeant des degats egaux la valeur de son arme.
+
+ --- Fin de la Partie ----
+
+La partie se termine lorsque l'un des personnage n'a plus de points de vie.
+Le personnage avec des points de vie restants est declare vainqueur.
+
+        Classes disponibles : 
+ .Chevalier [Health: 20] [Armor: 50] [Damage: 5] - capacite Charge : double les points de degats
+ .Orc [Health: 60] [Armor: 0] [Damage: 8] - capacite Stun : etourdi l'ennemi qui ne peut plus attaquer
+
+

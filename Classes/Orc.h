@@ -1,7 +1,7 @@
 #pragma once
+#include <string>
 #include "Entity.h"
 #include "StunCapacity.h"
-#include <string>
 
 class Orc : public Entity {
 public:

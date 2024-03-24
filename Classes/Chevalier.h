@@ -1,7 +1,7 @@
 #pragma once
+#include <string>
 #include "Entity.h"
 #include "ChargeCapacity.h"
-#include <string>
 
 class Chevalier : public Entity {
 public:

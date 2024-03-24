@@ -1,5 +1,5 @@
-#include "Entity.h"
 #include <iostream>
+#include "Entity.h"
 
 
 Entity::Entity(int health, int def, Weapon* weapon, Capacity* capacity)
@@ -53,6 +53,16 @@ void Entity::takeDamage(int damage) {
 		mHealth -= damage;
 	}
 }
+
+void Entity::defend() {
+	if ((rand() % 100) < 50) {
+		mDefense += 2;
+		std::cout << "Defense augmente de 2 !" << std::endl;
+	}
+	else 
+		std::cout << "Defense echoue ..." << std::endl;
+}
+
 
 void Entity::showInfo() const {
 	std::cout << "[Class: " << getClassName() << "] ";

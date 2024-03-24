@@ -1,7 +1,7 @@
 #pragma once
+#include <string>
 #include "Capacity.h"
 #include "Weapon.h"
-#include <string>
 
 class Entity {
 public:
@@ -31,6 +31,9 @@ public:
 
     // Fonction pour infliger des dégâts à l'entité en fonction de sa défense
     void takeDamage(int damage);
+
+    // Fonction pour se défendre
+    void defend();
 
     // Fonction pour afficher les informations de l'entité
     void showInfo() const;
